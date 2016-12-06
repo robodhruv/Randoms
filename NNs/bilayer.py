@@ -20,7 +20,7 @@ class NeuralNetwork():
         # normalise them between 0 and 1 and to capture higher order features
         # that any linear function would miss.
 
-    def __sigmoid(self, x):
+    def __sigmoid(self, x): 
         return 1 / (1 + exp(-x))
 
     # The derivative of the Sigmoid function.
