@@ -5,6 +5,7 @@ from csv import reader
 from math import sqrt
 import numpy as np
 import pickle, joblib
+import sys
 
 # Load a CSV file
 def load_csv(filename):
@@ -173,6 +174,7 @@ def subsample(dataset, ratio):
 # Make a prediction with a list of bagged trees
 def bagging_predict(trees, row):
 	predictions = [predict(tree, row) for tree in trees]
+	print "Confidence:" + str(reduce(lambda x, y: x+y, predictions))
 	return max(set(predictions), key=predictions.count)
 
 # Random Forest Algorithm
@@ -185,41 +187,42 @@ def random_forest(train, test, max_depth, min_size, sample_size, n_trees, n_feat
 	joblib.dump(trees, 'built_trees.pkl')
 	tree_new = joblib.load('built_trees.pkl', 'r')
 	predictions = [bagging_predict(trees, row) for row in test]
-	print predictions[0:2]
-	print test[0:2]
 	return(predictions)
 
-# Test the random forest algorithm
-seed(1)
-# load and prepare data
-filename = 'sonar.all-data.csv'
-# Data format: First 60 cou
+if (sys.argv[1] == "train"):
+	# Test the random forest algorithm
+	seed(4)
+	# load and prepare data
+	filename = 'sonar.all-data.csv'
+	# Data format: First 60 columns are the features and the last is the class(alphanumeric).
 
-dataset = load_csv(filename)
-# convert string attributes to integers
-for i in range(0, len(dataset[0])-1):
-	str_column_to_float(dataset, i)
-# convert class column to integers
-str_column_to_int(dataset, len(dataset[0])-1)
-# evaluate algorithm
-n_folds = 1
-max_depth = 12
-min_size = 1
-sample_size = 1.0
-n_features = int(sqrt(len(dataset[0])-1))
-for n_trees in [4]:
-	scores = evaluate_algorithm(dataset, random_forest, n_folds, max_depth, min_size, sample_size, n_trees, n_features)
-	print('Trees: %d' % n_trees)
-	print('Scores: %s' % scores)
-	print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
+	dataset = load_csv(filename)
+	# convert string attributes to integers
+	for i in range(0, len(dataset[0])-1):
+		str_column_to_float(dataset, i)
+	# convert class column to integers
+	str_column_to_int(dataset, len(dataset[0])-1)
+	# evaluate algorithm
+	n_folds = 1
+	max_depth = 12
+	min_size = 1
+	sample_size = 1.0
+	n_features = int(sqrt(len(dataset[0])-1))
+	for n_trees in [10]:
+		scores = evaluate_algorithm(dataset, random_forest, n_folds, max_depth, min_size, sample_size, n_trees, n_features)
+		print('Trees: %d' % n_trees)
+		print('Scores: %s' % scores)
+		print('Mean Accuracy: %.3f%%' % (sum(scores)/float(len(scores))))
 
-print "Training is now Completed!"
-unseen = raw_input("Enter the current data:")
+	print "Training is now Completed!"
 
-data = load_csv(unseen)
-tree_retrieve = joblib.load('built_trees.pkl')
-for i in range(0, len(data[0])-1):
-	str_column_to_float(data, i)
+if (sys.argv[1] == "predict"):
+	unseen = raw_input("Enter the current data:")
 
-for row in data:
-	print bagging_predict(tree_retrieve, row)
+	data = load_csv(unseen)
+	tree_retrieve = joblib.load('built_trees.pkl')
+	for i in range(0, len(data[0])-1):
+		str_column_to_float(data, i)
+
+	for row in data:
+		print bagging_predict(tree_retrieve, row)
