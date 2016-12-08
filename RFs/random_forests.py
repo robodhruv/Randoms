@@ -191,7 +191,7 @@ def random_forest(train, test, max_depth, min_size, sample_size, n_trees, n_feat
 
 if (sys.argv[1] == "train"):
 	# Test the random forest algorithm
-	seed(4)
+	seed()
 	# load and prepare data
 	filename = 'sonar.all-data.csv'
 	# Data format: First 60 columns are the features and the last is the class(alphanumeric).
