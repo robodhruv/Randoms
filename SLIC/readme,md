@@ -1,0 +1,3 @@
+## Simple Linear Iterative Clustering
+
+SLIC is an algorithm used for superpixel generation. When dealing with large images and the feature set is so large that most of the common algorithms are slowed down to the level that they become obsolete. Segmenting the image to superpixels
