@@ -15,7 +15,7 @@ def is_stationary(ts, test_window):
 	rol_std = pd.rolling_std(ts, window=test_window)
 
 	#Plot rolling statistics:
-	orig = plt.plot(timeseries, color='blue',label='Original')
+	orig = plt.plot(ts, color='blue',label='Original')
 	mean = plt.plot(rol_mean, color='red', label='Rolling Mean')
 	std = plt.plot(rol_std, color='black', label = 'Rolling Std')
 	plt.legend(loc='best')
@@ -42,13 +42,48 @@ data = pd.read_csv('AirPassengers.csv', parse_dates='Month', index_col='Month',d
 timeseries = data['#Passengers'] # Note that this is the head of the CSV
 # plt.plot(timeseries)
 # plt.show()
-is_stationary(timeseries, 12)
+# is_stationary(timeseries, 12)
 # is_stationary(np.log(timeseries), 12)
 
 ts_log = np.log(timeseries)
 moving_avg = pd.rolling_mean(ts_log,12)
-plt.plot(ts_log)
-plt.plot(moving_avg, color='red')
+# plt.plot(ts_log)
+# plt.plot(moving_avg, color='red')
 #plt.show()
 ts_log_moving_avg_diff = ts_log - moving_avg
 ts_log_moving_avg_diff.dropna(inplace=True) # Pandas in action :p
+# after the above, make sure that the test_statistic is lesser than the critical value.
+# For this you can run is_stationary again.
+# is_stationary(ts_log_moving_avg_diff, 12)
+
+expwighted_avg = pd.ewma(ts_log, halflife=12)
+# Exponential weights make sure that recent observations have more importance
+
+ts_log_ewma_diff = ts_log - expwighted_avg
+# test_stationarity(ts_log_ewma_diff)
+# On testing, apparently this has a lower test statistic value and hence
+# better as a stationary series
+
+from statsmodels.tsa.seasonal import seasonal_decompose
+decomposition = seasonal_decompose(ts_log)
+
+trend = decomposition.trend
+seasonal = decomposition.seasonal
+residual = decomposition.resid
+
+plt.subplot(411)
+plt.plot(ts_log, label='Original')
+plt.legend(loc='best')
+plt.subplot(412)
+plt.plot(trend, label='Trend')
+plt.legend(loc='best')
+plt.subplot(413)
+plt.plot(seasonal,label='Seasonality')
+plt.legend(loc='best')
+plt.subplot(414)
+plt.plot(residual, label='Residuals')
+plt.legend(loc='best')
+plt.tight_layout()
+plt.show()
+
+# Sorry for the inconvenience, this code is incomplete
