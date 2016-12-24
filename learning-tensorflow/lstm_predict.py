@@ -1,11 +1,6 @@
-# Class courtesy: Morvan Zhou
-# Youtube video tutorial: https://www.youtube.com/channel/UCdyjiB5H8Pu7aDTNVXTTpcg
+# This code is for using an LSTM to predict a time series. A more complex version is under development, with multiple
+# input/output nodes. Classified work, hence not public. Write to me if interested.
 
-"""
-Please note, this code is only for python 3+. If you are using python 2+, please modify the code accordingly.
-
-Run this script on tensorflow r0.10. Errors appear when using lower versions.
-"""
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
