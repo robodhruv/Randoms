@@ -77,9 +77,14 @@ sess = tf.Session()
 sess.run(tf.global_variables_initializer())
 
 
-for i in range(100):
-    batch_xs, batch_ys = mnist.train.next_batch(10)
-    sess.run(train_step, feed_dict={xs: batch_xs, ys: batch_ys, keep_prob: 0.5})
-    if i % 10 == 0:
-        print(compute_accuracy(
-            mnist.test.images, mnist.test.labels))
+for i in range(1000):
+    batch_xs, batch_ys = mnist.train.next_batch(100)
+    feed_dict={xs: batch_xs, ys: batch_ys, keep_prob: 0.5}
+    sess.run(train_step, feed_dict)
+    print i
+    if (i % 100 == 0) or ((i%50 == 0) and i > 500):
+        print("New Batch")
+        # for j in range(10):
+        test_batch_xs, test_batch_ys = mnist.train.next_batch(1000)
+        feed_dict = {xs: test_batch_xs, ys: test_batch_ys}
+        print(compute_accuracy(test_batch_xs, test_batch_ys))
