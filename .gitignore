@@ -2,3 +2,6 @@
 *.gz
 *.xz
 *.zip
+*~
+*.swp
+*.swap
