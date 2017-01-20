@@ -5,3 +5,9 @@
 *~
 *.swp
 *.swap
+
+# VHDL Files
+*.o
+testbench
+*.cf
+
