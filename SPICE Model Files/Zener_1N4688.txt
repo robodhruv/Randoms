@@ -1,0 +1,16 @@
+* Zener Diode 1N4688 SPICE Subcircuit Data
+
+.SUBCKT 1N4688  1 2
+* Terminals     A K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 2.73
+.MODEL DF D ( IS=43.8p RS=8.86 N=1.10
++ CJO=112p VJ=0.750 M=0.330 TT=50.1n )
+.MODEL DR D ( IS=8.77f RS=4.45k N=3.00 )
+.ENDS
+
+*Developed by Wadhwani Electronics Lab
+*Dept. of Electrical Engg.
+*IIT Bombay
+*January 09, 2015.

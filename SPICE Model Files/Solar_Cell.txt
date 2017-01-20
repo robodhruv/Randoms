@@ -1,0 +1,28 @@
+* Solar Cell SPICE Subcircuit Data
+
+.subckt solar_cell PX NX
+*IL is photo generated current
+IL NX TMP dc 0e-3
+*IL NX TMP dc 8e-3
+*IL NX TMP dc 10e-3
+
+d1 TMP NX diode
+.model diode d (is=(1e-13) n=1)
+
+d2 TMP NX diode2
+.model diode2 d (is=(2e-6) n=2)
+
+*rs TMP PX 0
+rs TMP PX 10
+*rs TMP PX 30
+
+*rsh TMP NX 5e2
+rsh TMP NX 1e3
+*rsh TMP NX 5e3
+
+.ends solar_cell
+
+*Developed by Wadhwani Electronics Lab
+*Dept. of Electrical Engg.
+*IIT Bombay
+*January 09, 2015.

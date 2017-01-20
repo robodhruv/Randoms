@@ -1,0 +1,7 @@
+*White LED SPICE Model Data
+.model WHITE D (IS = 1.2853E-15 N = 3.99 RS = 8.12296)
+
+*Developed by Wadhwani Electronics Lab
+*Dept. of Electrical Engg.
+*IIT Bombay
+*January 09, 2015.

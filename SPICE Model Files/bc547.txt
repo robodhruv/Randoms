@@ -1,0 +1,10 @@
+* BC547 SPICE Model Data
+
+.model bc547a NPN BF=400 NE=1.3 ISE=10.3F IKF=50M IS=10F VAF=80 ikr=12m
++ BR=9.5 NC=2 VAR=10 RB=280 RE=1 RC=40 VJE=.48 tr=.3u tf=.5n
++cje=12p vje=.48 mje=.5 cjc=6p vjc=.7 mjc:.33 isc=47p kf=2f
+
+*Developed by Wadhwani Electronics Lab
+*Dept. of Electrical Engg.
+*IIT Bombay
+*January 09, 2015.

@@ -1,0 +1,7 @@
+*Yellow LED SPICE Model Data
+.model YELLOW D (IS = 6.77E-22 N = 1.62 RS = 4.6779)
+
+*Developed by Wadhwani Electronics Lab
+*Dept. of Electrical Engg.
+*IIT Bombay
+*January 09, 2015.

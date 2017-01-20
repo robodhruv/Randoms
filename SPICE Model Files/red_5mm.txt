@@ -1,0 +1,7 @@
+*Red LED SPICE Model Data
+.model RED D (IS = 4.366E-25 N = 1.38167 RS = 3.00014)
+
+*Developed by Wadhwani Electronics Lab
+*Dept. of Electrical Engg.
+*IIT Bombay
+*January 09, 2015.

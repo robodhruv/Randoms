@@ -1,0 +1,17 @@
+* Diode 1N914 SPICE Model Data
+
+.MODEL 1N914 D (IS=6.2229E-9
++ N=1.9224
++ RS=.33636
++ IKF=42.843E-3
++ CJO=764.38E-15
++ M=.1001
++ VJ=9.9900
++ BV=100.14
++ IBV=.25951
++ TT=2.8854E-9)
+
+*Developed by Wadhwani Electronics Lab
+*Dept. of Electrical Engg.
+*IIT Bombay
+*January 09, 2015.
