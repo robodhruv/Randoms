@@ -3,7 +3,7 @@
 
 Ignore this if you have **not** encountered any issue with the installation and running of ModelSim and Quartus on your system. You are very lucky. (*Just Kidding! You have surely had this issue, only sorted.*)
 
-Hence assuming you have been following the procedure given in [this guide]("Getting Started.pdf"). Most certainly, Quartus will install jsut fine, and so will ModelSim. The issue is in launching due to inappropriate linking etc.
+Hence assuming you have been following the procedure given in [this guide](Getting Started.pdf). Most certainly, Quartus will install jsut fine, and so will ModelSim. The issue is in launching due to inappropriate linking etc.
 
 #### Stage 1
 This is the simplest error you would encounter. Navigate to the `modelsim_ase` folder and run:
