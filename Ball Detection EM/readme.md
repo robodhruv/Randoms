@@ -6,4 +6,9 @@ There can be multiple ways of detecting a ball in a background, and depending on
 
 *Software Used:* Matlab R2015b (Unfortunately; The basics, however, are simple and can be easily implemented in Python/C++)
 
+![Result1](ball_1.png)
+
+![Result2](ball_2.png)
+
+
 _Data taken from University of Pennsylvania's online course on 'Robotics: Estimation and Learning'_
