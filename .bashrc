@@ -58,7 +58,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]PrieureDeSion \[\033[01;34m\]@ \[\033[01;32m\]idiot-box\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]PrieureDeSion \[\033[01;36m\]@ \[\033[01;32m\]idiot-box\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
 # Here's a change
 
 else
@@ -118,37 +118,54 @@ fi
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias audioDL='youtube-dl --extract-audio --audio-format mp3 -l'
-alias cmake='/opt/cmake/bin/cmake'
+# alias cmake='/opt/cmake/bin/cmake'
 alias cmk='catkin_make'
 alias cmu='cd ~/Documents/CMU\ 2017'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias fun='cd ~/Desktop/IIT\ Bombay\ 2015-19/Cool\ Stuff/'
+alias fun='cd ~/Documents/Cool\ Stuff/'
 alias grep='grep --color=auto'
 alias iit='cd ~/Desktop/IIT\ Bombay\ 2015-19/'
 alias l='ls -CF'
 alias la='ls -A'
 alias ll='ls -alF'
 alias ls='ls --color=auto'
-alias matlab='~/MATLAB/bin/matlab'
+alias matlab='/usr/local/MATLAB/R2015b/bin/matlab'
 alias pc='cd /'
 alias pepit='autopep8 --in-place --aggressive --aggressive'
-alias proj='cd ~/Desktop/IIT\ Bombay\ 2015-19/Formal\ Projects/'
+alias proj='cd ~/Desktop/IIT\ Bombay\ 2015-19/Research/'
 alias quartus='/home/dhruv-shah/intelFPGA_lite/16.1/quartus/bin/quartus'
 alias result='python ~/git/asc/result.py'
-alias resume_gen='java -jar ResumeGenerator.jar "Dhruv Ilesh Shah" 150070016 "Electrical Engineering" "UG Second Year" "IIT Bombay" Male "" "26/01/1998" "Graduation;IIT Bombay;IIT Bombay;2019;9.05" "Intermediate/+2;CBSE;City International School, Pune;2015;96.80" "Matriculation;CBSE;Bharati Vidyapeeth, Pune;2013;10.00"
+alias resume_gen='java -jar ResumeGenerator.jar "Dhruv Ilesh Shah" 150070016 "Electrical Engineering" "UG Second Year" "IIT Bombay" Male "" "26/01/1998" "Graduation;IIT Bombay;IIT Bombay;2019;9.32" "Intermediate/+2;CBSE;City International School, Pune;2015;96.80" "Matriculation;CBSE;Bharati Vidyapeeth, Pune;2013;10.00"
 '
-alias resume_gen_short='java -jar ResumeGenerator.jar "Dhruv Ilesh Shah" 150070016 "Electrical Engineering" "UG Second Year" "IIT Bombay" Male "" "26/01/1998" "Graduation;IIT Bombay;IIT Bombay;2019;9.05"'
+alias resume_gen_short='java -jar ResumeGenerator.jar "Dhruv Ilesh Shah" 150070016 "Electrical Engineering" "UG Second Year" "IIT Bombay" Male "" "26/01/1998" "Graduation;IIT Bombay;IIT Bombay;2019;9.32"'
 alias scilab='~/scilab-5.5.2/bin/scilab'
 alias sem1='cd ~/Desktop/IIT\ Bombay\ 2015-19/Sem\ 1/'
 alias sem2='cd ~/Desktop/IIT\ Bombay\ 2015-19/Sem\ 2/'
 alias sem3='cd ~/Desktop/IIT\ Bombay\ 2015-19/Sem\ 3/'
 alias sem4='cd ~/Desktop/IIT\ Bombay\ 2015-19/Sem\ 4/'
+alias sem5='cd ~/Desktop/IIT\ Bombay\ 2015-19/Sem\ 5/'
+alias sem6='cd ~/Desktop/IIT\ Bombay\ 2015-19/Sem\ 6/'
 alias ssh_mars='ssh dhruv@10.9.128.12'
 alias ssh_pclab30='ssh prieuredesion@10.107.32.30'
 alias ssh_pclab44='ssh anon@10.107.32.44'
+alias ssh_pclab31='ssh -X student@10.107.32.31'
 alias ssh_ravan='ssh -X dhruvshah@10.107.1.5'
-alias ssh_rudra='ssh -X dhruvshah@10.107.1.6'
-alias ssh_sharada='ssh dhruvshah@sharada.ee.iitb.ac.in'
+alias ssh_rudra='ssh dhruvshah@10.107.1.6'
+alias ssh_rudrax='ssh -X dhruvshah@10.107.1.6'
+alias ssh_sharada='ssh -X dhruvshah@sharada.ee.iitb.ac.in'
 alias view_tex='~/view_tex.sh'
 alias webcam='vlc v4l2:///dev/video0'
+alias oned='cd ~/OneDrive'
+alias setclk='sudo service ntp stop && sudo ntpdate ntp.iitb.ac.in'
+alias eagle='~/eagle-7.2.0/bin/eagle'
+alias ipe='~/ipe.AppImage'
+alias jfr18='cd /home/prieuredesion/Documents/CMU\ 2017/Work/Write-Ups/JFR2018'
+# source /opt/ros/kinetic/setup.bash
+
+# export GAZEBO_MODEL_PATH=$GAZEBO_MODEL_PATH:$SIM_DIR
+# export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:$(roscd;pwd)/lib
+# export GAZEBO_RESOURCE_PATH=$GAZEBO_PLUGIN_PATH:$SIM_DIR
+
+export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk-amd64/jre
+export ETS_TOOLKIT=wx # For Mayavi
