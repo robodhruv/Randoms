@@ -58,13 +58,23 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]PrieureDeSion \[\033[01;36m\]@ \[\033[01;32m\]idiot-box\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]PrieureDeSion \[\033[01;36m\]@ \[\033[01;32m\]\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[00m\]\$ '
 # Here's a change
 
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
-unset color_prompt force_color_prompt
+# unset color_prompt force_color_prompt
+
+parse_git_branch() {
+ git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+if [ "$color_prompt" = yes ]; then
+ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]PrieureDeSion \[\033[01;36m\]@ \[\033[01;32m\]\h\[\033[00m\]:\[\033[01;36m\]\w\[\033[01;31m\] $(parse_git_branch) \[\033[00m\]\$ '
+else
+ PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(parse_git_branch)\$ '
+fi
+
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
@@ -115,6 +125,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
 
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 alias audioDL='youtube-dl --extract-audio --audio-format mp3 -l'
@@ -169,3 +180,8 @@ alias jfr18='cd /home/prieuredesion/Documents/CMU\ 2017/Work/Write-Ups/JFR2018'
 
 export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk-amd64/jre
 export ETS_TOOLKIT=wx # For Mayavi
+
+source /opt/ros/kinetic/setup.bash
+# Install Ruby Gems to ~/gems
+export GEM_HOME=$HOME/gems
+export PATH=$HOME/gems/bin:$PATH
